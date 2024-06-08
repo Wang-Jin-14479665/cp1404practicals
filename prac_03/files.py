@@ -16,3 +16,12 @@ with open('numbers.txt', 'r') as file:
 
 result = first_number + second_number
 print(result)
+
+
+# Task 4: Print the total for all lines in numbers.txt
+total = 0
+with open('numbers.txt', 'r') as file:
+    for line in file:
+        total += int(line.strip())
+
+print(total)
