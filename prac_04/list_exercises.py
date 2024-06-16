@@ -13,3 +13,12 @@ average = sum(numbers) / len(numbers)
 
 print(f"The first number is {first_number}\nThe last number is {last_number}\n"
       f"The smallest number is {smallest}\nThe largest number is {largest}\nThe average of the numbers is {average}")
+
+usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface', 'BaseStdIn',
+             'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer', 'bob']
+
+username = input("Enter your username: ")
+if username in usernames:
+    print("Access granted")
+else:
+    print("Access denied")
