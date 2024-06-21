@@ -1,14 +1,26 @@
-# 初始化一个空列表来存储数字
-numbers = []
+import random
 
-# 提示用户输入 5 个数字
-for i in range(5):
-    number = float(input("Number: "))
-    numbers.append(number)
+# Constants
+MIN_NUMBER = 1
+MAX_NUMBER = 45
+NUMBERS_PER_PICK = 6
 
-# 输出数字的相关信息
-print(f"The first number is {int(numbers[0])}")
-print(f"The last number is {int(numbers[-1])}")
-print(f"The smallest number is {int(min(numbers))}")
-print(f"The largest number is {int(max(numbers))}")
-print(f"The average of the numbers is {sum(numbers) / len(numbers)}")
+def main():
+    num_picks = int(input("How many quick picks? "))
+    for _ in range(num_picks):
+        quick_pick = generate_quick_pick()
+        print(" ".join(f"{num:2}" for num in quick_pick))
+
+def generate_quick_pick():
+    quick_pick = []
+    while len(quick_pick) < NUMBERS_PER_PICK:
+        number = random.randint(MIN_NUMBER, MAX_NUMBER)
+        if number not in quick_pick:
+            quick_pick.append(number)
+    # quick_pick.sort()
+    return quick_pick
+
+
+
+if __name__ == "__main__":
+    main()
