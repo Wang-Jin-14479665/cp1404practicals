@@ -19,6 +19,13 @@ def main():
     countries = process_countries(data)
     print(countries)
 
+    print("Wimbledon Champions: ")
+    for champion, count in champions.items():
+        print(f"{champion} {count}")
+
+    print(f"These {len(countries)} countries have won Wimbledon: ")
+    print(" ".join(countries))
+
 def process_champions(data):
     """Extract all champion names and number of championships from the data"""
     champions = {}
@@ -35,6 +42,6 @@ def process_countries(data):
     countries = set()
     for row in data:
         countries.add(row[1])
-    return countries
+    return sorted(countries)
 
 main()
