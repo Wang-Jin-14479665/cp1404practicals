@@ -13,10 +13,11 @@ def main():
         header = next(reader)
         for row in reader:
             data.append(row)
-    print(data)
+    # print(data)
 
     champions = process_champions(data)
-    countries = processs_countries(data)
+    countries = process_countries(data)
+    print(countries)
 
 def process_champions(data):
     """Extract all champion names and number of championships from the data"""
@@ -30,6 +31,10 @@ def process_champions(data):
     return champions
 
 def process_countries(data):
-
+    """Extract all the countries that won the championship"""
+    countries = set()
+    for row in data:
+        countries.add(row[1])
+    return countries
 
 main()
