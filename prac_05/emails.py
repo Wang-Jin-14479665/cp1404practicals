@@ -1,7 +1,7 @@
 """
 Emails
 Estimate: 20 minutes
-Actual:   minutes
+Actual:   30 minutes
 """
 
 
@@ -24,6 +24,7 @@ def main():
 
 def extract_name(user_email):
     """This function extracts the name of the first half of the entered email"""
+    # Extract the part before @ in the email and separate the "." Before and after (if any)
     parts = user_email.split("@")[0].split(".")
     name = " ".join(parts).title()
     return name
