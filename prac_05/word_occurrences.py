@@ -18,5 +18,7 @@ for word in words:
 
 sorted_word_count = dict(sorted(word_count.items()))  # Sort the elements in the dictionary
 
+longest_word_length = max(len(word) for word in sorted_word_count)  # Find the length of the longest word
+
 for word, count in sorted_word_count.items():
-    print(f"{word}: {count}")
+    print(f"{word:<{longest_word_length}}: {count}")
