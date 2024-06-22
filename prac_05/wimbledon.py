@@ -1,7 +1,7 @@
 """
 wimbledon
 Estimate: 40 minutes
-Actual:   minutes
+Actual:   50 minutes
 """
 import csv
 FILE_PATH = 'wimbledon.csv'
@@ -49,7 +49,7 @@ def display_champions(champions):
 
 def display_countries(countries):
     """Export all winning countries according to the requirements and statistics"""
-    print(f"These {len(countries)} countries have won Wimbledon: ")
+    print(f"\nThese {len(countries)} countries have won Wimbledon: ")
     print(" ".join(countries))
 
 main()
