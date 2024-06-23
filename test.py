@@ -1,26 +1,54 @@
-import random
+import csv
 
-# Constants
-MIN_NUMBER = 1
-MAX_NUMBER = 45
-NUMBERS_PER_PICK = 6
+
+def load_data(file_path):
+    data = []
+    with open(file_path, "r", encoding="utf-8-sig") as in_file:
+        reader = csv.reader(in_file)
+        header = next(reader)  # Skip the header row
+        for row in reader:
+            data.append(row)
+    return data
+
+
+def process_champions(data):
+    champions = {}
+    for row in data:
+        champion = row[2]
+        if champion in champions:
+            champions[champion] += 1
+        else:
+            champions[champion] = 1
+    return champions
+
+
+def process_countries(data):
+    countries = set()
+    for row in data:
+        countries.add(row[1])
+    return sorted(countries)
+
+
+def display_champions(champions):
+    print("Wimbledon Champions:")
+    for champion, wins in champions.items():
+        print(f"{champion} {wins}")
+
+
+def display_countries(countries):
+    print("\nThese", len(countries), "countries have won Wimbledon:")
+    print(", ".join(countries))
+
 
 def main():
-    num_picks = int(input("How many quick picks? "))
-    for _ in range(num_picks):
-        quick_pick = generate_quick_pick()
-        print(" ".join(f"{num:2}" for num in quick_pick))
+    file_path = 'prac_05/wimbledon.csv'
+    data = load_data(file_path)
 
-def generate_quick_pick():
-    quick_pick = []
-    while len(quick_pick) < NUMBERS_PER_PICK:
-        number = random.randint(MIN_NUMBER, MAX_NUMBER)
-        if number not in quick_pick:
-            quick_pick.append(number)
-    # quick_pick.sort()
-    return quick_pick
+    champions = process_champions(data)
+    countries = process_countries(data)
+
+    display_champions(champions)
+    display_countries(countries)
 
 
-
-if __name__ == "__main__":
-    main()
+main()
