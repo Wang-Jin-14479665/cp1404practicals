@@ -30,5 +30,5 @@ def extract_name(user_email):
     return name
 
 
-if __name__ == '__main__':
-    main()
+
+main()
