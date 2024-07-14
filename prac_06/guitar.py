@@ -5,6 +5,7 @@ Actual time: 20 minutes
 """
 CURRENT_YEAR = 2024
 
+
 class Guitar:
     def __init__(self, name="", year=0, cost=0):
         self.name = name
@@ -19,6 +20,7 @@ class Guitar:
 
     def is_vintage(self):
         return self.get_age() >= 50
+
 
 def main():
     guitars = []
@@ -39,8 +41,9 @@ def main():
 
     print("\n... snip ...\n")
     print("These are my guitars:")
-    for i,guitar in enumerate(guitars,1):
+    for i, guitar in enumerate(guitars, 1):
         vintage_string = "(vintage)" if guitar.is_vintage() else ""
-        print(f"Guitar {i}: {guitar.name} ({guitar.year}), worth ${guitar.cost}{vintage_string}")
+        print(f"Guitar {i}: {guitar.name:>20} ({guitar.year}), worth ${guitar.cost:10,.2f}{vintage_string}")
+
 
 main()
