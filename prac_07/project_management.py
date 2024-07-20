@@ -32,7 +32,7 @@ def main():
         elif choice == 'f':
             print('Filter projects functionality goes here.')
         elif choice == 'a':
-            print('Add new project functionality goes here.')
+            add_new_project(projects)
         elif choice == 'u':
             update_project(projects)
         else:
@@ -67,6 +67,17 @@ def display_projects(projects):
     print("Completed projects:")
     for project in sorted(completed_projects):
         print(project)
+
+
+def add_new_project(projects):
+    """can add a new item"""
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yyyy): ")
+    priority = input("Priority: ")
+    cost_estimate = input("Cost estimate: ")
+    completion_percentage = input("Percent complete: ")
+    projects.append(Project(name, start_date, priority, cost_estimate, completion_percentage))
 
 
 def update_project(projects):
