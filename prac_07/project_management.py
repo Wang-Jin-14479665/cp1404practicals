@@ -28,7 +28,7 @@ def main():
         elif choice == 's':
             print('Save projects functionality goes here.')
         elif choice == 'd':
-            print('Display projects functionality goes here.')
+            display_projects(projects)
         elif choice == 'f':
             print('Filter projects functionality goes here.')
         elif choice == 'a':
@@ -55,6 +55,18 @@ def load_projects():
             projects.append(Project(name, start_date, priority, cost_estimate, completion_percentage))
     return projects
 
+def display_projects(projects):
+    """Displays all incomplete and completed projects"""
+    incomplete_projects = [project for project in projects if not project.is_complete()]
+    completed_projects = [project for project in projects if project.is_complete()]
+
+    print("Incomplete projects:")
+    for project in incomplete_projects:
+        print(project)
+
+    print("Completed projects:")
+    for project in completed_projects:
+        print(project)
 
 if __name__ == '__main__':
     main()
