@@ -61,11 +61,11 @@ def display_projects(projects):
     completed_projects = [project for project in projects if project.is_complete()]
 
     print("Incomplete projects:")
-    for project in incomplete_projects:
+    for project in sorted(incomplete_projects):
         print(project)
 
     print("Completed projects:")
-    for project in completed_projects:
+    for project in sorted(completed_projects):
         print(project)
 
 if __name__ == '__main__':
