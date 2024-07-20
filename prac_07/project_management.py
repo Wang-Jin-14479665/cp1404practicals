@@ -3,6 +3,8 @@ CP1404/CP5632 Practical - project_management
 expected time: 60 minutes
 Actual time:
 """
+from prac_07.project import Project
+
 FILE_PATH = 'projects.txt'
 MENU = ('- (L)oad projects'
         '\n- (S)ave projects'
@@ -12,12 +14,17 @@ MENU = ('- (L)oad projects'
         '\n- (U)pdate project'
         '\n- (Q)uit')
 def main():
+    projects = load_projects()
+    print(f"Loaded {len(projects)} projects from {FILE_PATH}")
+
     print('Welcome to Pythonic Project Management')
     print(MENU)
     choice = input(">>> ").lower()
     while choice != 'q':
         if choice == 'l':
-            print('Load projects functionality goes here.')
+            projects = load_projects()
+            for row in projects:
+                print(row)
         elif choice == 's':
             print('Save projects functionality goes here.')
         elif choice == 'd':
@@ -36,6 +43,18 @@ def main():
     if save_choice == 'yes':
         print("Saving projects...")
     print("Thank you for using custom-built project management software.")
+
+
+def load_projects():
+    """Read and load the data in the specified file"""
+    projects = []
+    with open(FILE_PATH, "r") as file:
+        file.readline()  # Skip header
+        for line in file:
+            name, start_date, priority, cost_estimate, completion_percentage = line.strip().split('\t')
+            projects.append(Project(name, start_date, priority, cost_estimate, completion_percentage))
+    return projects
+
 
 if __name__ == '__main__':
     main()
