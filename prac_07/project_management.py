@@ -34,7 +34,7 @@ def main():
         elif choice == 'a':
             print('Add new project functionality goes here.')
         elif choice == 'u':
-            print('Update project functionality goes here.')
+            update_project(projects)
         else:
             print("Invalid choice")
         choice = input(">>> ").lower()
@@ -67,6 +67,20 @@ def display_projects(projects):
     print("Completed projects:")
     for project in sorted(completed_projects):
         print(project)
+
+
+def update_project(projects):
+    """Update project priorities and completion"""
+    for index, project in enumerate(projects):
+        print(f"{index} - {project}")
+    choice = int(input("Project choice: "))
+    project = projects[choice]
+
+    new_percentage = input("New percentage: ")
+    new_priority = input("New priority: ")
+
+    project.completion_percentage = int(new_percentage)
+    project.priority = int(new_priority)
 
 if __name__ == '__main__':
     main()
