@@ -18,6 +18,19 @@ def main():
     guitars.sort()
     display_guitars(guitars)
 
+    print('\nAdd new guitar here')
+    name = input("Enter guitar name (or 'q' to quit): ")
+    while name != 'q':
+        year = int(input("Enter year: "))
+        cost = float(input("Enter cost: "))
+        new_guitar = Guitar(name, year, cost)
+        guitars.append(new_guitar)
+        print(f"{new_guitar} added.")
+        name = input("Enter guitar name (or 'q' to quit): ")
+    print('Program quit')
+
+    save_guitars(guitars)
+
 def load_guitars():
     """Load guitar in csv file"""
     guitars = []
@@ -32,5 +45,12 @@ def display_guitars(guitars):
     """Print out the contents of the list"""
     for guitar in guitars:
         print(guitar)
+
+def save_guitars(guitars):
+    """Write the added guitar to a csv file"""
+    with open(FILE_NAME, 'w', newline='') as file:
+        writer = csv.writer(file)
+        for guitar in guitars:
+            writer.writerow([guitar.name, guitar.year, guitar.cost])
 
 main()
