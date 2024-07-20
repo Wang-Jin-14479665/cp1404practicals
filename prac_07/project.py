@@ -29,6 +29,10 @@ class Project:
         #         f"completion: {self.completion_percentage}% ")
         return self.__str__()
 
+    def is_complete(self):
+        """Determine whether the project progress is complete"""
+        return self.completion_percentage == 100
+
 
 def run_tests():
     """Run simple tests/demos on Project class."""
