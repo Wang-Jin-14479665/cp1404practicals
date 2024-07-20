@@ -33,6 +33,10 @@ class Project:
         """Determine whether the project progress is complete"""
         return self.completion_percentage == 100
 
+    def __lt__(self, other):
+        """Compare different project priorities"""
+        return self.priority < other.priority
+
 
 def run_tests():
     """Run simple tests/demos on Project class."""
@@ -42,6 +46,8 @@ def run_tests():
 
     project2 = Project("Project 2", "10/06/2022", 2, 2000.0, 75)
     print(project2)
+
+    print(project1 < project2)
 
 
 if __name__ == "__main__":
