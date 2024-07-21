@@ -28,7 +28,8 @@ def main():
             for row in projects:
                 print(row)
         elif choice == 's':
-            print('Save projects functionality goes here.')
+            filename = input("Filename to save to: ")
+            save_projects(projects, filename)
         elif choice == 'd':
             display_projects(projects)
         elif choice == 'f':
@@ -57,6 +58,19 @@ def load_projects():
             name, start_date, priority, cost_estimate, completion_percentage = line.strip().split('\t')
             projects.append(Project(name, start_date, priority, cost_estimate, completion_percentage))
     return projects
+
+
+def save_projects(projects, filename="projects.txt"):
+    """Save the result to the destination file"""
+    with open(filename, "w") as file:
+        file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
+        for project in projects:
+            file.write(f"{project.name}\t"
+                       f"{project.start_date.strftime('%d/%m/%Y')}\t"
+                       f"{project.priority}\t"
+                       f"{project.cost_estimate}\t"
+                       f"{project.completion_percentage}\n")
+
 
 def display_projects(projects):
     """Displays all incomplete and completed projects"""
