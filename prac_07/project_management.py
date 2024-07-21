@@ -1,7 +1,7 @@
 """
 CP1404/CP5632 Practical - project_management
 expected time: 60 minutes
-Actual time:
+Actual time: 150
 """
 from datetime import datetime
 
@@ -45,7 +45,7 @@ def main():
 
     save_choice = input("Would you like to save to projects.txt? (yes/no) ").lower()
     if save_choice == 'yes':
-        print("Saving projects...")
+        save_projects(projects)
     print("Thank you for using custom-built project management software.")
 
 
@@ -87,6 +87,7 @@ def display_projects(projects):
 
 
 def filter_projects_by_date(projects, date_str):
+    """Classify projects according to a point in time"""
     date = datetime.strptime(date_str, "%d/%m/%Y").date()
     filtered_projects = [project for project in projects if project.start_date > date]
     for project in filtered_projects:
