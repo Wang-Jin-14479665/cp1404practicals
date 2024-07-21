@@ -3,6 +3,8 @@ CP1404/CP5632 Practical - project_management
 expected time: 60 minutes
 Actual time:
 """
+from datetime import datetime
+
 from prac_07.project import Project
 
 FILE_PATH = 'projects.txt'
@@ -30,7 +32,8 @@ def main():
         elif choice == 'd':
             display_projects(projects)
         elif choice == 'f':
-            print('Filter projects functionality goes here.')
+            date_str = input("Show projects that start after date (dd/mm/yyyy): ")
+            filter_projects_by_date(projects, date_str)
         elif choice == 'a':
             add_new_project(projects)
         elif choice == 'u':
@@ -68,6 +71,12 @@ def display_projects(projects):
     for project in sorted(completed_projects):
         print(project)
 
+
+def filter_projects_by_date(projects, date_str):
+    date = datetime.strptime(date_str, "%d/%m/%Y").date()
+    filtered_projects = [project for project in projects if project.start_date > date]
+    for project in filtered_projects:
+        print(project)
 
 def add_new_project(projects):
     """can add a new item"""
