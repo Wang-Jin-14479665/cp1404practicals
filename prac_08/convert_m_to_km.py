@@ -17,4 +17,10 @@ class MileToKm(App):
         result = value * MILES_TO_KM
         self.root.ids.output_label.text = str(result)
 
+    def handle_increment(self, change):
+        """Update input data when click the up/down button"""
+        value = float(self.root.ids.input_miles.text) + change
+        self.root.ids.input_miles.text = str(value)
+        self.handle_calculate()
+
 MileToKm().run()
