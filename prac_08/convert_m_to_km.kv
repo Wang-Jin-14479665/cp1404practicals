@@ -7,6 +7,9 @@ BoxLayout:
             id: input_miles
             text: '34'
             font_size: 48
+            # Call the handle calculate function
+            on_text: app.handle_calculate()
+
 
         BoxLayout:
             orientation: 'vertical'
@@ -16,9 +19,13 @@ BoxLayout:
             Button:
                 text: 'Down'
 
+    Button:
+        text: 'Convert miles to km'
+        on_press: app.handle_calculate()
+
 
     Label:
         id: output_label
         font_size: 48
-        text: ''
+        text: 'output'
         color: (1, 1, 0, 1)
