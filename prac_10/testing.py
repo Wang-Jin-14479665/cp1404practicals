@@ -49,6 +49,22 @@ def run_tests():
     test_car = Car(fuel=10)
     assert test_car.fuel == 10, "Car fuel is not set correctly when specified."
 
+def format_as_sentence(phrase):
+    """
+        Formats the input phrase as a sentence: starting with a capital letter and ending with a full stop.
+
+        >>> format_as_sentence('hello')
+        'Hello.'
+        >>> format_as_sentence('It is an ex parrot.')
+        'It is an ex parrot.'
+        >>> format_as_sentence('good morning')
+        'Good morning.'
+        """
+    phrase = phrase[0].upper() + phrase[1:]  # Capitalize the first letter
+    if not phrase.endswith('.'):
+        phrase += '.'
+    return phrase
+
 
 run_tests()
 
@@ -68,16 +84,3 @@ doctest.testmod()
 # and one more you decide (one that is valid!)
 # test this and watch the tests fail
 # then write the body of the function so that the tests pass
-
-def format_as_sentence(phrase):
-    """
-        Formats the input phrase as a sentence: starting with a capital letter and ending with a full stop.
-
-        >>> format_as_sentence('hello')
-        'Hello.'
-        >>> format_as_sentence('It is an ex parrot.')
-        'It is an ex parrot.'
-        >>> format_as_sentence('good morning')
-        'Good morning.'
-        """
-    pass
